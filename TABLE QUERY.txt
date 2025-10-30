@@ -1,0 +1,17 @@
+CREATE TABLE `eserGrocery` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `sku` VARCHAR(20) NOT NULL UNIQUE COMMENT 'Stock Keeping Unit',
+  `item_name` VARCHAR(150) NOT NULL,
+  `category` VARCHAR(50) NOT NULL COMMENT 'e.g., Produce, Dairy, Bakery',
+  `sub_category` VARCHAR(50) DEFAULT NULL COMMENT 'e.g., Fresh Vegetables, Hard Cheeses',
+  `unit_of_measure` VARCHAR(10) NOT NULL COMMENT 'e.g., pc, kg, L, oz',
+  `price_retail` DECIMAL(10, 2) NOT NULL,
+  `price_cost` DECIMAL(10, 2) NOT NULL COMMENT 'Wholesale cost for profit calculation',
+  `quantity_in_stock` INT(11) NOT NULL DEFAULT 0,
+  `min_stock_level` INT(11) DEFAULT 10 COMMENT 'Threshold for low stock alerts',
+  `supplier_id` INT(11) DEFAULT NULL,
+  `expiration_date` DATE DEFAULT NULL,
+  `is_perishable` BOOLEAN NOT NULL DEFAULT 0 COMMENT '0=No, 1=Yes',
+  `location_aisle` VARCHAR(10) DEFAULT NULL,
+  `notes` TEXT DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
